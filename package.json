@@ -6,12 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "watch": "npx tailwindcss -i ./style/globals.css -o ./dist/output.css --watch"
   },
   "dependencies": {
+    "axios": "^0.26.1",
+    "install": "^0.13.0",
     "next": "12.1.0",
+    "npm": "^8.5.4",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-youtube": "^7.14.0",
+    "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",

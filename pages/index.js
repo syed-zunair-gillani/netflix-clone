@@ -1,7 +1,10 @@
 import Head from 'next/head'
 import Header from '../components/header'
+import PopularMovies from '../components/PopularMovies'
+import axios from 'axios'
+import Banner from '../components/banner'
 
-export default function Home() {
+export default function Home({movies}) {
   return (
     <div>
       <Head>
@@ -11,6 +14,26 @@ export default function Home() {
       </Head>
 
       <Header/>
+      <Banner movies={movies.results[3]}/>
+      <div className='-mt-20'>
+        <PopularMovies movies={movies.results} heading="Most Popular" />
+        <PopularMovies movies={movies.results} heading="Top Rated"/>
+        <PopularMovies movies={movies.results} heading="Latest Movies"/>
+        
+      </div>      
     </div>
   )
+}
+
+
+
+
+
+export async function getServerSideProps() {
+  const res = await axios(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`);
+  const movies = res.data;
+
+  return {
+    props: { movies }
+  }
 }
